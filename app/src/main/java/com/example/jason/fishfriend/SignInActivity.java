@@ -18,7 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignInActivity extends AppCompatActivity {
-
+    public String id;
     private EditText mEmail_editTxt;
     private EditText mPassword_editTxt;
 
@@ -58,8 +58,10 @@ public class SignInActivity extends AppCompatActivity {
                                 Toast.makeText(SignInActivity.this, "User signed in",
                                         Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+                                intent.putExtra("ID",id);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
+                                id = mAuth.getUid();
                                 finish();
                                 return;
                             }
